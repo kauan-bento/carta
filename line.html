@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Linha do Tempo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1a1a1d, #3d0c11);
+      color: white;
+      min-height: 100vh;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      color: #fbd5e0;
+      font-weight: 400;
+      font-size: 32px;
+      margin-bottom: 60px;
+      text-align: center;
+    }
+
+    .timeline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 80px;
+      flex-wrap: nowrap;
+      position: relative;
+    }
+
+    .step {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .dot {
+      width: 35px;
+      height: 35px;
+      background-color: crimson;
+      border-radius: 50%;
+      box-shadow: 0 0 12px crimson;
+      transition: transform 0.3s ease;
+      z-index: 2;
+    }
+
+    .step:hover .dot {
+      transform: scale(1.1);
+    }
+
+    .line {
+      width: 80px;
+      height: 2px;
+      background: crimson;
+      transition: width 0.5s ease, opacity 0.5s ease;
+    }
+
+    .line.hidden {
+      width: 0;
+      opacity: 0;
+    }
+
+    .big-card {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      background: rgba(255, 255, 255, 0.06);
+      padding: 25px 30px;
+      border-radius: 16px;
+      color: #f8d9e2;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 12px rgba(220, 20, 60, 0.3);
+      width: 320px;
+      max-width: 90vw;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.4s ease;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .step:hover .big-card {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+
+    .big-card h3 {
+      margin-bottom: 12px;
+      font-size: 20px;
+      color: #ffc4d6;
+    }
+
+    .big-card p {
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .big-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+    }
+
+    .back {
+      margin-top: 60px;
+      color: #f8d9e2;
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 1px solid crimson;
+      border-radius: 10px;
+      transition: 0.3s ease;
+    }
+
+    .back:hover {
+      background: crimson;
+      color: white;
+      box-shadow: 0 0 8px crimson;
+    }
+
+    @media (max-width: 768px) {
+      .timeline {
+        flex-direction: column;
+        gap: 50px;
+      }
+
+      .line {
+        width: 2px;
+        height: 60px;
+      }
+
+      .line.hidden {
+        height: 0;
+      }
+
+      .big-card {
+        top: auto;
+        left: 60px;
+        transform: translateX(0) translateY(-50%);
+        text-align: left;
+        max-width: 220px;
+      }
+
+      .step:hover .big-card {
+        transform: translateX(0) translateY(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🌸 Linha do Tempo Afetiva</h1>
+
+  <div class="timeline">
+    <div class="step" onclick="connectStep(this)">
+      <div class="dot"></div>
+      <div class="big-card">
+        <h3>Capítulo 1: Encontro</h3>
+        <p>A gente mal se falava, eramos conhecidos, que nunca se conheceram de verdade.</p>
+        <img src="sdsdsdsdsda.png" alt="Encontro">
+      </div>
+    </div>
+    <div class="line hidden"></div>
+
+    <div class="step" onclick="connectStep(this)">
+      <div class="dot"></div>
+      <div class="big-card">
+        <h3>Capítulo 2: Conexão</h3>
+        <p>Um dia alguém me falou que vc era legal, naquele dia eu conheci a pessoa mais incrivel do mundo, tanto sua personalidade quanto o seu carinho, ambos apaixonantes</p>
+        <img src="fdas.png" alt="Conexão">
+      </div>
+    </div>
+    <div class="line hidden"></div>
+
+    <div class="step" onclick="connectStep(this)">
+      <div class="dot"></div>
+      <div class="big-card">
+        <h3>Capítulo 3: ???</h3>
+        <p>Ninguém sabe oque os futuro nos guarda, mas como eu prometi, conversarei contigo em todas nossas vidas</p>
+      </div>
+    </div>
+  </div>
+
+  <a href="index.html" class="back">← Voltar</a>
+
+  <script>
+    function connectStep(step) {
+      const line = step.nextElementSibling;
+      if (line && line.classList.contains('line')) {
+        line.classList.remove('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
